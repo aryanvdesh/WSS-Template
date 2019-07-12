@@ -10,40 +10,623 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2508,         74]
-NotebookOptionsPosition[      1520,         44]
-NotebookOutlinePosition[      2344,         72]
-CellTagsIndexPosition[      2301,         69]
+NotebookDataLength[     30176,        721]
+NotebookOptionsPosition[     23729,        627]
+NotebookOutlinePosition[     24532,        654]
+CellTagsIndexPosition[     24489,        651]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["< Project Title >", "Title",
+Cell["Creating a Common Word List for Marathi Language", "Title",
  CellChangeTimes->{{3.770055572438499*^9, 3.7700555729498453`*^9}, {
-  3.770055604008165*^9, 
-  3.7700556066618843`*^9}},ExpressionUUID->"49ab34ee-bfd5-49f5-beef-\
+  3.770055604008165*^9, 3.7700556066618843`*^9}, {3.771832623658367*^9, 
+  3.771832679912899*^9}, {3.771856208249522*^9, 
+  3.771856216342037*^9}},ExpressionUUID->"49ab34ee-bfd5-49f5-beef-\
 400d3cc456dd"],
 
-Cell["< First and Last name>", "Text",
+Cell["Aryan Deshpande and Faizon Zaman", "Text",
  CellChangeTimes->{{3.549624168509506*^9, 3.549624171985794*^9}, {
   3.549624508772977*^9, 3.549624510775043*^9}, {3.5498187159613867`*^9, 
   3.5498187170087957`*^9}, {3.549819049020514*^9, 3.5498190533440437`*^9}, {
-  3.77005561844785*^9, 
-  3.7700556489651537`*^9}},ExpressionUUID->"94536f76-3fd2-4bf6-b228-\
+  3.77005561844785*^9, 3.7700556489651537`*^9}, {3.7718326822426863`*^9, 
+  3.771832688927853*^9}, {3.771865138367395*^9, 
+  3.7718651433318777`*^9}},ExpressionUUID->"94536f76-3fd2-4bf6-b228-\
 fa93ec9acae9"],
 
-Cell["< Mentor\[CloseCurlyQuote]s First and Last name>", "Text",
- CellChangeTimes->{{3.549624515773694*^9, 3.5496245246892014`*^9}, {
-  3.5498187208956137`*^9, 3.5498187221413403`*^9}, {3.5498190558319674`*^9, 
-  3.54981906151682*^9}, {3.770055624686027*^9, 
-  3.770055659820487*^9}},ExpressionUUID->"b70c649b-a958-4202-9f22-\
-238ea1f9c7d4"]
+Cell[CellGroupData[{
+
+Cell["Description", "Section",
+ CellChangeTimes->{{3.771856303536742*^9, 
+  3.771856315564818*^9}},ExpressionUUID->"f06ebe3d-b55e-4d3b-b161-\
+84cb28a839d9"],
+
+Cell["\<\
+The purpose of this project is to find out the most common word in Marathi \
+and then use the data to obtain some cool observations! The core of this \
+project was to import data from articles that were present online i.e, in \
+this case, Wikipedia Marathi. But this code can also be used for any other \
+website with some tweaks in the code. \
+\>", "Text",
+ CellChangeTimes->{{3.700774312865305*^9, 3.700774350341485*^9}, 
+   3.716902427754265*^9, 3.7354828504054613`*^9, {3.735483653472313*^9, 
+   3.735483683917967*^9}, {3.7354849519274273`*^9, 3.735484958639419*^9}, {
+   3.7355873998710403`*^9, 3.73558761257386*^9}, {3.736099062603284*^9, 
+   3.736099062938388*^9}, 3.738588402126446*^9, {3.738588473865753*^9, 
+   3.738588479696198*^9}, {3.738588515044569*^9, 3.738588515882841*^9}, {
+   3.7716571088894873`*^9, 3.7716572169283943`*^9}, {3.771708573785853*^9, 
+   3.771708612004506*^9}, {3.7717086905970097`*^9, 3.771708704178619*^9}, {
+   3.7717089348015823`*^9, 3.771708950440989*^9}, {3.771788308096546*^9, 
+   3.7717883995824947`*^9}},ExpressionUUID->"34035f7e-883f-42bb-a14d-\
+9f94ab17b71f"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Process", "Section",
+ CellChangeTimes->{{3.771856353613296*^9, 
+  3.771856360188201*^9}},ExpressionUUID->"dfe8f207-e5a5-4a72-8cc7-\
+e87f605e65d9"],
+
+Cell["\<\
+First we tried to see whether the language was supported by Mathematica, it \
+was but the database is limited. Some of the words were stored but most of \
+them were shown to be Missing. To overcome this we decided to build our own \
+database for the language so that we can do some cool computations.\
+\>", "Text",
+ CellChangeTimes->{{3.7354837220663652`*^9, 3.735483751473709*^9}, {
+   3.735486262485011*^9, 3.735486288116446*^9}, {3.735486386471116*^9, 
+   3.735486438104398*^9}, {3.735486495412992*^9, 3.7354864964790583`*^9}, {
+   3.735587802145555*^9, 3.735587813514737*^9}, {3.7360943822773247`*^9, 
+   3.736094388427802*^9}, 3.736868570517212*^9, {3.771657318402893*^9, 
+   3.7716574311129007`*^9}, {3.7717522354829273`*^9, 3.771752243362796*^9}, {
+   3.771752322840671*^9, 3.771752336455882*^9}, {3.7717523754683123`*^9, 
+   3.7717524512407427`*^9}, 
+   3.771752710506709*^9},ExpressionUUID->"ee1e9677-3841-4649-8967-\
+1e4e69ab6442"],
+
+Cell["Importing Data from Wikipedia:", "Text",
+ CellChangeTimes->{{3.771856381670747*^9, 
+  3.7718564757715187`*^9}},ExpressionUUID->"8c20f72e-19c2-41f1-b5a7-\
+e91eef67a299"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Import", "[", 
+   RowBox[{
+   "\"\<https://mr.wikipedia.org/wiki/\:0926\:093e\:0932\:0928:\:0935\:093f\
+\:0936\:0947\:0937_\:0932\:0947\:0916\:0928/\:092f\:093e\:0926\:0940\>\"", 
+    ",", "\"\<Plaintext\>\""}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.771753043595756*^9, 3.771753089735927*^9}, {
+  3.771753393519862*^9, 3.77175339761028*^9}, {3.771832426942689*^9, 
+  3.771832429422423*^9}, {3.7718324642528353`*^9, 
+  3.771832465316844*^9}},ExpressionUUID->"f0b40b7d-0c5a-4b35-989f-\
+bf5081c066cb"],
+
+Cell["\<\
+Where the link that you want to import data from is the main Wikipedia Page \
+on which the links are stored. But this only imports the hyperlinks and also \
+other stuff that is present on the webpage. So we have to find out the XML \
+Element and then open all of them (automatically) and then store their data \
+in a list which is done in the steps given below.\
+\>", "Text",
+ CellChangeTimes->{{3.771752970700955*^9, 3.771752979166978*^9}, {
+  3.7717530934150867`*^9, 3.771753108629992*^9}, {3.77175339931012*^9, 
+  3.771753405548867*^9}, {3.7718324710917587`*^9, 
+  3.771832548230497*^9}},ExpressionUUID->"ef61d870-67a4-4470-bec9-\
+814ba7a9e4ca"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Code", "Section",
+ CellChangeTimes->{{3.771856523797925*^9, 
+  3.77185652734219*^9}},ExpressionUUID->"5119262b-18e6-4f9c-983c-\
+a6ad27f131fc"],
+
+Cell["\<\
+We started by importing the data that we wanted from Marathi Wikipedia by \
+scanning the webpage for the hyperlinks that we wanted and then selected the \
+link, removed the null cases and the other blank hyperlinks. Also for \
+searching the article automatically we have to append the link such that the \
+link is added after the main Wikipedia Hyperlink. For eg. \
+(en.wikipedia.org/the_article_link_stored):\
+\>", "Text",
+ CellChangeTimes->{{3.735483932944489*^9, 3.7354839472643557`*^9}, 
+   3.735486472511282*^9, {3.735587929314433*^9, 3.735588040172488*^9}, {
+   3.7360944038458967`*^9, 3.736094409443921*^9}, 3.736868574101507*^9, {
+   3.771788435662715*^9, 3.771788621451952*^9}, {3.771789434371553*^9, 
+   3.7717895272239532`*^9}},ExpressionUUID->"134bc65d-57a6-4c50-9ac2-\
+a389d1d97612"],
+
+Cell["Importing article as an XML Object", "CodeText",
+ CellChangeTimes->{{3.771857302253511*^9, 
+  3.771857313967898*^9}},ExpressionUUID->"05e41936-ca12-4d15-8f82-\
+ba6ca93eec81"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"xml", " ", "=", " ", 
+    RowBox[{"Import", "[", 
+     RowBox[{
+     "\"\<https://mr.wikipedia.org/wiki/\:0926\:093e\:0932\:0928:\:0935\:093f\
+\:0936\:0947\:0937_\:0932\:0947\:0916\:0928/\:092f\:093e\:0926\:0940\>\"", 
+      ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<HTML\>\"", ",", "\"\<XMLObject\>\""}], "}"}]}], "]"}]}], 
+   ";"}], "Code"]], "Input",
+ CellChangeTimes->{{3.7718651232717237`*^9, 
+  3.771865124569948*^9}},ExpressionUUID->"3d96a78c-86e3-4dd7-a2f9-\
+ec3c0b9f5e9a"],
+
+Cell["\<\
+Now that we have the XML, we want to search for the hyperlinks of the \
+individual articles. We search for \[OpenCurlyDoubleQuote]wiki/\
+\[CloseCurlyDoubleQuote] and then others are Null\
+\>", "Text",
+ CellChangeTimes->{{3.771864677234283*^9, 3.771864702212607*^9}, {
+  3.771866379979395*^9, 
+  3.771866393326207*^9}},ExpressionUUID->"f8d87d3e-8b88-4f94-9c1d-\
+0c9cdeb11313"],
+
+Cell["Using Cases to find the articles", "CodeText",
+ CellChangeTimes->{{3.7718573531875*^9, 3.771857414473819*^9}, {
+  3.77186470462637*^9, 
+  3.771864712192382*^9}},ExpressionUUID->"39ce97b7-1676-408d-aab5-\
+0be0fb507e6c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wikLinks", "=", 
+   RowBox[{"Cases", "[", 
+    RowBox[{"xml", ",", " ", 
+     RowBox[{
+      RowBox[{"XMLElement", "[", 
+       RowBox[{"\"\<a\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"___", ",", 
+          RowBox[{"\"\<href\>\"", "\[Rule]", " ", "articleLink_"}], ",", 
+          "___", ",", 
+          RowBox[{"\"\<title\>\"", "\[Rule]", " ", "title_"}], ",", "___"}], 
+         "}"}], ",", "_"}], "]"}], "\[RuleDelayed]", " ", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"title", ",", "\[IndentingNewLine]", 
+        RowBox[{"With", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"ss", "=", 
+            RowBox[{"StringSplit", "[", 
+             RowBox[{"articleLink", ",", " ", "\"\</\>\""}], "]"}]}], "}"}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{"Block", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"decoded", ",", "url"}], "}"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"decoded", "=", 
+              RowBox[{"URLDecode", "[", 
+               RowBox[{
+               "ss", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"StringMatchQ", "[", 
+                RowBox[{
+                 RowBox[{
+                 "ss", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+                  ",", " ", "\"\<wiki\>\""}], "]"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"url", "=", 
+                 RowBox[{"StringJoin", "@", 
+                  RowBox[{"Riffle", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "ss", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", " ", "decoded"}], "}"}], 
+                    ",", "\"\</\>\""}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{
+                "\"\<https://mr.wikipedia.org/\>\"", "<>", "url"}]}]}], 
+              "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+           "]"}]}], "\[IndentingNewLine]", "]"}]}], "\n", "}"}]}], ",", 
+     "Infinity"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.771846681976832*^9, 3.771846739594314*^9}, {
+   3.7718566134027033`*^9, 3.771856620884013*^9}, {3.7718574203777447`*^9, 
+   3.7718574717083807`*^9}, {3.771864726885727*^9, 3.771864757551827*^9}, 
+   3.771865176445168*^9},ExpressionUUID->"0d926955-f8ae-4222-ad1c-\
+9bad81830ef8"],
+
+Cell["Now we can get rid of the Null cases", "Text",
+ CellChangeTimes->{{3.771865884641604*^9, 3.7718658946882563`*^9}, 
+   3.771866266097782*^9, {3.771866360572878*^9, 
+   3.771866368295862*^9}},ExpressionUUID->"869f69fc-e259-4590-ad16-\
+4ec8208f1f52"],
+
+Cell[TextData[StyleBox["DeleteCases of results containing Null", \
+"CodeText"]], "Text",
+ CellChangeTimes->{{3.7718647622841883`*^9, 3.771864782008877*^9}, {
+  3.7718663719481697`*^9, 
+  3.7718663782962513`*^9}},ExpressionUUID->"4a6d06bc-38eb-4e84-93bf-\
+8de4320ea54f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mrWikiLinks", "=", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{"wikLinks", ",", 
+     RowBox[{"{", 
+      RowBox[{"_", ",", "Null"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.771846681976832*^9, 3.771846739594314*^9}, {
+   3.7718566134027033`*^9, 3.771856620884013*^9}, {3.7718574203777447`*^9, 
+   3.7718574717083807`*^9}, {3.771864726885727*^9, 3.771864757551827*^9}, {
+   3.771864794317452*^9, 3.771864796772111*^9}, 3.771864842493856*^9, 
+   3.771865160727453*^9},ExpressionUUID->"bdf116df-9aa2-4976-9580-\
+0cc4b0f48be6"],
+
+Cell["\<\
+Now that we have the url we can import the Wikipedia articles\
+\>", "Text",
+ CellChangeTimes->{{3.7718659001459427`*^9, 3.7718659132163677`*^9}, {
+  3.77186640295286*^9, 
+  3.771866436378563*^9}},ExpressionUUID->"d5450628-0974-415a-a34e-\
+d77a5a07107f"],
+
+Cell[TextData[StyleBox["Importing all of the articles in plaintext", \
+"CodeText"]], "Text",
+ CellChangeTimes->{{3.7718647986984797`*^9, 
+  3.771864840535804*^9}},ExpressionUUID->"b8d1fcf2-4397-4bf6-abee-\
+f67e454e9031"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"test", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Import", "[", 
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ",", "\"\<Plaintext\>\""}], "]"}], 
+     "&"}], "/@", "mrWikiLinks"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.771846681976832*^9, 3.771846739594314*^9}, {
+  3.7718566134027033`*^9, 3.771856620884013*^9}, {3.7718574203777447`*^9, 
+  3.7718574717083807`*^9}, {3.771864726885727*^9, 3.771864757551827*^9}, {
+  3.771864794317452*^9, 
+  3.771864796772111*^9}},ExpressionUUID->"ae85050b-e771-4a8e-9cfd-\
+65fd27d54685"],
+
+Cell["After getting the data we replace the whitespace characters", "Text",
+ CellChangeTimes->{{3.7718659168218727`*^9, 3.7718659257175093`*^9}, {
+  3.771866441037307*^9, 3.771866461808651*^9}, {3.771866522282996*^9, 
+  3.7718665236299057`*^9}},ExpressionUUID->"685a2a1c-b66e-4f5b-af15-\
+a69e9d3eadad"],
+
+Cell[TextData[StyleBox["Now that we have the links we just replace all of the \
+WhitespaceCharacters with a single whitespace character", "CodeText"]], "Text",\
+
+ CellChangeTimes->{{3.771788688960134*^9, 3.771788716078928*^9}, {
+   3.771788756679998*^9, 3.7717887927794743`*^9}, 3.7718647921977777`*^9, {
+   3.771864854527595*^9, 3.771864866643128*^9}, 3.771865165443362*^9, {
+   3.771866469439973*^9, 3.771866474461615*^9}, {3.771866512171235*^9, 
+   3.771866584595031*^9}},ExpressionUUID->"770b967d-77db-4a05-9d83-\
+3feacbc98d9a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"importedData", "=", 
+   RowBox[{"Replace", "[", 
+    RowBox[{"test", " ", ",", 
+     RowBox[{
+      RowBox[{"WhitespaceCharacter", ".."}], "\[Rule]", "\"\< \>\""}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.771864870495363*^9, 
+  3.771864905565607*^9}},ExpressionUUID->"852822fd-6d2b-4fb4-b84c-\
+22a902e563c4"],
+
+Cell["\<\
+With this clean data we can remove those cases that did not return any \
+data($Failed)\
+\>", "Text",
+ CellChangeTimes->{{3.771865932613687*^9, 3.771865940447246*^9}, {
+  3.771866477390851*^9, 3.771866499513446*^9}, {3.771866577005817*^9, 
+  3.7718666456741333`*^9}},ExpressionUUID->"404e745a-becd-4513-9672-\
+453ed0c9812a"],
+
+Cell[TextData[StyleBox["Removing all of the failed cases during importing the \
+links", "CodeText"]], "Text",
+ CellChangeTimes->{{3.7718649142906*^9, 
+  3.771864932114195*^9}},ExpressionUUID->"c1fc50fb-2220-4570-ab37-\
+0c53b7ccd539"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newList", "=", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{"importedData", ",", " ", "$Failed"}], "]"}]}], ";"}]], "Input",Ex\
+pressionUUID->"4b3e2487-1331-4706-9e54-edd314240f3d"],
+
+Cell["\<\
+Now that we have a newly formatted list we again have to remove the \
+WhitespaceCharacters and replace them with a single whitespace character and \
+to do this we have to map it over the earlier list so that all of the \
+elements are covered.\
+\>", "Text",
+ CellChangeTimes->{{3.771865945977118*^9, 3.771865964809573*^9}, {
+  3.7718666202732897`*^9, 
+  3.771866716632742*^9}},ExpressionUUID->"33d2bb7c-abf8-48a7-8658-\
+fa1eb6bb6ed1"],
+
+Cell[TextData[StyleBox["Replacing all of the whitespace characters to an \
+empty string", "CodeText"]], "Text",
+ CellChangeTimes->{{3.7718649461484957`*^9, 
+  3.77186495893087*^9}},ExpressionUUID->"cbc254a8-13b7-440e-88f1-\
+274c0ac2e57f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newList2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"#", " ", ",", 
+       RowBox[{
+        RowBox[{"WhitespaceCharacter", ".."}], "\[Rule]", "\"\< \>\""}]}], 
+      "]"}], "&"}], "/@", "newList"}]}], ";"}]], "Input",ExpressionUUID->\
+"e6667f39-f039-4b81-9bf1-cfde931564c5"],
+
+Cell[TextData[{
+ StyleBox["Split ", "CodeText"],
+ StyleBox["newList2", "Input"],
+ StyleBox[" to words ", "CodeText"]
+}], "Text",
+ CellChangeTimes->{{3.7717888261107187`*^9, 3.7717888311853456`*^9}, {
+   3.77178890211835*^9, 3.771788928435102*^9}, 3.771864971330515*^9, {
+   3.771866839734027*^9, 
+   3.7718668582020817`*^9}},ExpressionUUID->"93135129-ce9f-4d9d-b13f-\
+0be5715a1b8a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newList3", " ", "=", 
+   RowBox[{"TextWords", "@", "newList2"}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.771846569839135*^9},ExpressionUUID->"28e5cbab-41e9-45da-9179-\
+17bad45f9fe6"],
+
+Cell[TextData[{
+ StyleBox["Merging ", "CodeText"],
+ StyleBox["newList3", "Input"],
+ StyleBox[" together and then counting unique elements", "CodeText"]
+}], "Text",
+ CellChangeTimes->{{3.771788972890068*^9, 3.771788987103649*^9}, {
+   3.771789029287772*^9, 3.771789084352462*^9}, 3.771864975873468*^9, {
+   3.771866930243167*^9, 
+   3.771866930665762*^9}},ExpressionUUID->"129a01a1-c240-4db7-a7c7-\
+29fa2d564aad"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"countedlist", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"newList3", "//", "Flatten"}], "//", "Counts"}]}], ";"}]], "Input",\
+ExpressionUUID->"dd9b110f-17bc-4a16-9bbb-a3b8960a1250"],
+
+Cell["Sorting countedlist", "Text",
+ CellChangeTimes->{{3.771865998798905*^9, 3.771866003317959*^9}, {
+  3.771866907024413*^9, 
+  3.7718669231813173`*^9}},ExpressionUUID->"c8b0bc16-1877-45d4-801e-\
+3e278cd86afb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sortedList", " ", "=", " ", 
+   RowBox[{"Sort", "[", "countedlist", "]"}]}], ";"}]], "Input",ExpressionUUID\
+->"405c7753-3b08-4cca-be37-49213fb32c4d"],
+
+Cell["\<\
+We are considering two cases such that one of them contains stopwords as \
+generally stopwords tend to be used more\
+\>", "Text",
+ CellChangeTimes->{{3.771867049113285*^9, 
+  3.771867074406869*^9}},ExpressionUUID->"0ee1dd08-a8c9-40fd-9947-\
+e8aed6fb1942"],
+
+Cell[TextData[{
+ StyleBox["Translating ", "CodeText"],
+ StyleBox["stopwords", "Input"]
+}], "Text",
+ CellChangeTimes->{{3.771866998095134*^9, 
+  3.77186702312475*^9}},ExpressionUUID->"34a2c858-d097-417a-a0a9-\
+e4673a34b6f4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stopwords1", "=", " ", 
+   RowBox[{"ParallelMap", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"WordTranslation", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"\"\<English\>\"", "\[Rule]", "\"\<Marathi\>\""}]}], "]"}], 
+      "&"}], ",", 
+     RowBox[{"WordList", "[", "\"\<Stopwords\>\"", "]"}]}], "]"}]}], 
+  ";"}]], "Input",ExpressionUUID->"fe2f127b-8563-4eb5-9b26-4cb5fdde6af7"],
+
+Cell[TextData[StyleBox["Deleting the cases during translation is missing.", \
+"CodeText"]], "Text",
+ CellChangeTimes->{{3.7718670893303547`*^9, 
+  3.7718671190599813`*^9}},ExpressionUUID->"a8f94ab9-9902-4aae-8aa4-\
+a10855bba9ef"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stopwords", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"DeleteCases", "[", 
+     RowBox[{"stopwords1", ",", "_Missing"}], "]"}], "//", "Flatten"}]}], 
+  ";"}]], "Input",ExpressionUUID->"ee497b41-fbe3-4978-911f-64def4ba104e"],
+
+Cell["Adding some new stop words", "Text",
+ CellChangeTimes->{{3.771866021117185*^9, 3.771866025016511*^9}, {
+  3.771867082978424*^9, 
+  3.771867084847118*^9}},ExpressionUUID->"c63706a7-a8a3-44b9-aafa-\
+4eb66195eee0"],
+
+Cell[TextData[{
+ StyleBox["Appending ", "CodeText"],
+ "and",
+ StyleBox[" to stopwords", "CodeText"]
+}], "Text",
+ CellChangeTimes->{{3.7718650192276163`*^9, 3.7718650455965223`*^9}, {
+  3.7718671526033497`*^9, 3.7718671970139523`*^9}, {3.7718672559931593`*^9, 
+  3.7718672575573606`*^9}},ExpressionUUID->"52f34fbb-8f69-4743-b88a-\
+84ac151dd6b0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"AppendTo", "[", 
+    RowBox[{"stopwords", ",", "\"\<\:0906\:0923\:093f\>\""}], "]"}], ";"}], 
+  " "}]], "Input",
+ CellChangeTimes->{
+  3.771867148420385*^9},ExpressionUUID->"48efce74-04cc-4a5d-aa22-\
+d5f1c5614679"],
+
+Cell[TextData[{
+ StyleBox["Appending ", "CodeText"],
+ "or",
+ StyleBox[" to stopwords", "CodeText"]
+}], "Text",
+ CellChangeTimes->{{3.7718671947705297`*^9, 
+  3.771867206351132*^9}},ExpressionUUID->"9c15eac8-7c55-4852-b676-\
+d41f18f65d22"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"stopwords", ",", "\"\<\:092f\:093e\>\""}], "]"}], ";"}]], "Input",\
+ExpressionUUID->"4bda73e5-dbe4-49ad-8783-7e0dc2609da8"],
+
+Cell[TextData[{
+ "Appending a ",
+ StyleBox["whitespace character", "Code"],
+ " to stopwords"
+}], "CodeText",
+ CellChangeTimes->{{3.771867212346998*^9, 
+  3.771867240393056*^9}},ExpressionUUID->"7035a24c-678c-4a77-9471-\
+bda271e9aa95"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"stopwords", ",", "\"\< \>\""}], "]"}], ";"}]], "Input",ExpressionU\
+UID->"adbae72e-8511-4265-a370-9b6528fbdea5"],
+
+Cell[TextData[StyleBox["Deleting stop words and some whitespace characters", \
+"CodeText"]], "Text",
+ CellChangeTimes->{{3.771789133072515*^9, 3.771789153624036*^9}, {
+  3.771789193353902*^9, 3.771789230531636*^9}, {3.7717903791447067`*^9, 
+  3.771790465545314*^9}, {3.77179070496599*^9, 3.77179070530753*^9}, {
+  3.771866030818639*^9, 3.7718660384191217`*^9}, {3.771867315031609*^9, 
+  3.771867322364313*^9}},ExpressionUUID->"09837f35-73fa-4e77-94b5-\
+599c819d65ab"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newList4", " ", "=", 
+   RowBox[{
+    RowBox[{"DeleteCases", "[", 
+     RowBox[{
+      RowBox[{"newList3", "//", "Flatten"}], ",", 
+      RowBox[{"Alternatives", "@@", "stopwords"}]}], "]"}], "//", 
+    RowBox[{
+     RowBox[{"DeleteCases", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"WhitespaceCharacter", ".."}]}], " ", "]"}], "&"}]}]}], 
+  ";"}]], "Input",ExpressionUUID->"6bbc15d4-5285-4e9b-aa6b-df61e19a3661"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"d", "=", " ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"newList4", ",", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{
+        RowBox[{"StringContainsQ", "[", 
+         RowBox[{"Alternatives", "@@", 
+          RowBox[{"Alphabet", "[", "]"}]}], "]"}], "[", 
+        RowBox[{"ToLowerCase", "[", "#", "]"}], "]"}]}], "&"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{
+  3.771846610960451*^9},ExpressionUUID->"75ae7442-9247-4de1-b30c-\
+4c8dc823165d"],
+
+Cell[TextData[StyleBox["Getting word counts and applying reverse sort", \
+"CodeText"]], "Text",
+ CellChangeTimes->{{3.7718660558301077`*^9, 3.7718660645580053`*^9}, {
+  3.7718673248376904`*^9, 
+  3.771867364071041*^9}},ExpressionUUID->"8a034c71-6199-4628-9a2c-\
+d4c8e3cd5bf2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FinalList", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"d", "//", "Counts"}], "//", "ReverseSort"}]}], ";"}]], "Input",Ex\
+pressionUUID->"b32742cd-10dc-4475-bf78-d89ed2ee42f8"],
+
+Cell[TextData[StyleBox["Making a WordCloud", "CodeText"]], "Text",
+ CellChangeTimes->{{3.771856820820092*^9, 3.771856833697777*^9}, {
+  3.7718673859887247`*^9, 
+  3.771867389134231*^9}},ExpressionUUID->"d966fd40-6603-438e-a157-\
+0df0c13ee328"],
+
+Cell[BoxData[
+ RowBox[{"WordCloud", "[", "d", "]"}]], "Input",
+ CellChangeTimes->{{3.771856835567005*^9, 
+  3.77185683780863*^9}},ExpressionUUID->"79da1cfc-5f6d-4911-9578-\
+4e09088dfc90"],
+
+Cell[TextData[StyleBox["And the finally put them in a dataset so that we see \
+it in a tabular form:", "CodeText"]], "Text",
+ CellChangeTimes->{{3.771856840279855*^9, 
+  3.771856863144457*^9}},ExpressionUUID->"d652fb60-5a5a-4993-a5d5-\
+7e47cd9aee49"],
+
+Cell[BoxData[
+ RowBox[{"FinalList", "//", "Dataset"}]], "Input",
+ CellChangeTimes->{{3.7718568647095003`*^9, 
+  3.7718568692131157`*^9}},ExpressionUUID->"afccd80e-86c5-413c-8027-\
+158fedc625f3"],
+
+Cell[CellGroupData[{
+
+Cell["Notes", "Subsection",
+ CellChangeTimes->{{3.771867452418543*^9, 
+  3.771867455874672*^9}},ExpressionUUID->"084af4d1-d11c-4eb6-bc78-\
+058de1a53f6b"],
+
+Cell[TextData[StyleBox["So there might be a slight issue you might notice \
+after running this which I was not able to figure out how to solve. If \
+possible, you are welcomed to do it. It is that it also displays the \
+whitespaces! I don\[CloseCurlyQuote]t know how! I tried to append StopWords \
+and then remove it also wrote a line to do it but it doesn\[CloseCurlyQuote]t \
+see to work.", "CodeText"]], "Item",
+ CellChangeTimes->{{3.7718674596370068`*^9, 
+  3.771867466420752*^9}},ExpressionUUID->"359c8826-eb67-499e-9077-\
+d8bbffd5a640"]
+}, Closed]]
+}, Closed]]
 }, Open  ]]
 },
-WindowSize->{720, 855},
-WindowMargins->{{360, Automatic}, {Automatic, 0}},
+WindowSize->{1299, 704},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
 DockedCells->{
   Cell[
    TextData[{
@@ -56,8 +639,7 @@ DockedCells->{
       RGBColor[0.97, 0.83, 0.35], FontFamily -> "Source Sans Pro", FontSize -> 
       40]}], CellFrameMargins -> 10, Background -> 
    RGBColor[0.12, 0.14, 0.15]]},
-FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
-2018)",
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -72,9 +654,74 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 213, 4, 98, "Title",ExpressionUUID->"49ab34ee-bfd5-49f5-beef-400d3cc456dd"],
-Cell[796, 28, 364, 6, 35, "Text",ExpressionUUID->"94536f76-3fd2-4bf6-b228-fa93ec9acae9"],
-Cell[1163, 36, 341, 5, 35, "Text",ExpressionUUID->"b70c649b-a958-4202-9f22-238ea1f9c7d4"]
+Cell[580, 22, 339, 5, 99, "Title",ExpressionUUID->"49ab34ee-bfd5-49f5-beef-400d3cc456dd"],
+Cell[922, 29, 473, 7, 36, "Text",ExpressionUUID->"94536f76-3fd2-4bf6-b228-fa93ec9acae9"],
+Cell[CellGroupData[{
+Cell[1420, 40, 156, 3, 68, "Section",ExpressionUUID->"f06ebe3d-b55e-4d3b-b161-84cb28a839d9"],
+Cell[1579, 45, 1113, 17, 60, "Text",ExpressionUUID->"34035f7e-883f-42bb-a14d-9f94ab17b71f"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2729, 67, 152, 3, 54, "Section",ExpressionUUID->"dfe8f207-e5a5-4a72-8cc7-e87f605e65d9"],
+Cell[2884, 72, 951, 15, 60, "Text",ExpressionUUID->"ee1e9677-3841-4649-8967-1e4e69ab6442"],
+Cell[3838, 89, 174, 3, 36, "Text",ExpressionUUID->"8c20f72e-19c2-41f1-b5a7-e91eef67a299"],
+Cell[4015, 94, 541, 11, 34, "Input",ExpressionUUID->"f0b40b7d-0c5a-4b35-989f-bf5081c066cb"],
+Cell[4559, 107, 658, 11, 84, "Text",ExpressionUUID->"ef61d870-67a4-4470-bec9-814ba7a9e4ca"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5254, 123, 148, 3, 54, "Section",ExpressionUUID->"5119262b-18e6-4f9c-983c-a6ad27f131fc"],
+Cell[5405, 128, 806, 13, 84, "Text",ExpressionUUID->"134bc65d-57a6-4c50-9ac2-a389d1d97612"],
+Cell[6214, 143, 180, 3, 39, "CodeText",ExpressionUUID->"05e41936-ca12-4d15-8f82-ba6ca93eec81"],
+Cell[6397, 148, 538, 14, 34, "Input",ExpressionUUID->"3d96a78c-86e3-4dd7-a2f9-ec3c0b9f5e9a"],
+Cell[6938, 164, 385, 8, 36, "Text",ExpressionUUID->"f8d87d3e-8b88-4f94-9c1d-0c9cdeb11313"],
+Cell[7326, 174, 224, 4, 39, "CodeText",ExpressionUUID->"39ce97b7-1676-408d-aab5-0be0fb507e6c"],
+Cell[7553, 180, 2661, 62, 285, "Input",ExpressionUUID->"0d926955-f8ae-4222-ad1c-9bad81830ef8"],
+Cell[10217, 244, 253, 4, 36, "Text",ExpressionUUID->"869f69fc-e259-4590-ad16-4ec8208f1f52"],
+Cell[10473, 250, 269, 5, 36, "Text",ExpressionUUID->"4a6d06bc-38eb-4e84-93bf-8de4320ea54f"],
+Cell[10745, 257, 577, 12, 31, "Input",ExpressionUUID->"bdf116df-9aa2-4976-9580-0cc4b0f48be6"],
+Cell[11325, 271, 263, 6, 36, "Text",ExpressionUUID->"d5450628-0974-415a-a34e-d77a5a07107f"],
+Cell[11591, 279, 220, 4, 36, "Text",ExpressionUUID->"b8d1fcf2-4397-4bf6-abee-f67e454e9031"],
+Cell[11814, 285, 597, 15, 31, "Input",ExpressionUUID->"ae85050b-e771-4a8e-9cfd-65fd27d54685"],
+Cell[12414, 302, 302, 4, 36, "Text",ExpressionUUID->"685a2a1c-b66e-4f5b-af15-a69e9d3eadad"],
+Cell[12719, 308, 532, 8, 36, "Text",ExpressionUUID->"770b967d-77db-4a05-9d83-3feacbc98d9a"],
+Cell[13254, 318, 358, 10, 31, "Input",ExpressionUUID->"852822fd-6d2b-4fb4-b84c-22a902e563c4"],
+Cell[13615, 330, 333, 7, 36, "Text",ExpressionUUID->"404e745a-becd-4513-9672-453ed0c9812a"],
+Cell[13951, 339, 233, 4, 36, "Text",ExpressionUUID->"c1fc50fb-2220-4570-ab37-0c53b7ccd539"],
+Cell[14187, 345, 216, 5, 31, "Input",ExpressionUUID->"4b3e2487-1331-4706-9e54-edd314240f3d"],
+Cell[14406, 352, 443, 9, 60, "Text",ExpressionUUID->"33d2bb7c-abf8-48a7-8658-fa1eb6bb6ed1"],
+Cell[14852, 363, 238, 4, 36, "Text",ExpressionUUID->"cbc254a8-13b7-440e-88f1-274c0ac2e57f"],
+Cell[15093, 369, 349, 10, 31, "Input",ExpressionUUID->"e6667f39-f039-4b81-9bf1-cfde931564c5"],
+Cell[15445, 381, 382, 9, 36, "Text",ExpressionUUID->"93135129-ce9f-4d9d-b13f-0be5715a1b8a"],
+Cell[15830, 392, 220, 6, 31, "Input",ExpressionUUID->"28e5cbab-41e9-45da-9179-17bad45f9fe6"],
+Cell[16053, 400, 412, 9, 36, "Text",ExpressionUUID->"129a01a1-c240-4db7-a7c7-29fa2d564aad"],
+Cell[16468, 411, 213, 5, 31, "Input",ExpressionUUID->"dd9b110f-17bc-4a16-9bbb-a3b8960a1250"],
+Cell[16684, 418, 212, 4, 36, "Text",ExpressionUUID->"c8b0bc16-1877-45d4-801e-3e278cd86afb"],
+Cell[16899, 424, 185, 4, 31, "Input",ExpressionUUID->"405c7753-3b08-4cca-be37-49213fb32c4d"],
+Cell[17087, 430, 265, 6, 36, "Text",ExpressionUUID->"0ee1dd08-a8c9-40fd-9947-e8aed6fb1942"],
+Cell[17355, 438, 223, 6, 36, "Text",ExpressionUUID->"34a2c858-d097-417a-a0a9-e4673a34b6f4"],
+Cell[17581, 446, 422, 11, 31, "Input",ExpressionUUID->"fe2f127b-8563-4eb5-9b26-4cb5fdde6af7"],
+Cell[18006, 459, 229, 4, 36, "Text",ExpressionUUID->"a8f94ab9-9902-4aae-8aa4-a10855bba9ef"],
+Cell[18238, 465, 256, 6, 31, "Input",ExpressionUUID->"ee497b41-fbe3-4978-911f-64def4ba104e"],
+Cell[18497, 473, 217, 4, 36, "Text",ExpressionUUID->"c63706a7-a8a3-44b9-aafa-4eb66195eee0"],
+Cell[18717, 479, 344, 8, 36, "Text",ExpressionUUID->"52f34fbb-8f69-4743-b88a-84ac151dd6b0"],
+Cell[19064, 489, 261, 8, 34, "Input",ExpressionUUID->"48efce74-04cc-4a5d-aa22-d5f1c5614679"],
+Cell[19328, 499, 238, 7, 36, "Text",ExpressionUUID->"9c15eac8-7c55-4852-b676-d41f18f65d22"],
+Cell[19569, 508, 187, 4, 31, "Input",ExpressionUUID->"4bda73e5-dbe4-49ad-8783-7e0dc2609da8"],
+Cell[19759, 514, 234, 7, 39, "CodeText",ExpressionUUID->"7035a24c-678c-4a77-9471-bda271e9aa95"],
+Cell[19996, 523, 176, 4, 31, "Input",ExpressionUUID->"adbae72e-8511-4265-a370-9b6528fbdea5"],
+Cell[20175, 529, 467, 7, 36, "Text",ExpressionUUID->"09837f35-73fa-4e77-94b5-599c819d65ab"],
+Cell[20645, 538, 451, 12, 31, "Input",ExpressionUUID->"6bbc15d4-5285-4e9b-aa6b-df61e19a3661"],
+Cell[21099, 552, 491, 15, 31, "Input",ExpressionUUID->"75ae7442-9247-4de1-b30c-4c8dc823165d"],
+Cell[21593, 569, 276, 5, 36, "Text",ExpressionUUID->"8a034c71-6199-4628-9a2c-d4c8e3cd5bf2"],
+Cell[21872, 576, 208, 5, 31, "Input",ExpressionUUID->"b32742cd-10dc-4475-bf78-d89ed2ee42f8"],
+Cell[22083, 583, 243, 4, 36, "Text",ExpressionUUID->"d966fd40-6603-438e-a157-0df0c13ee328"],
+Cell[22329, 589, 187, 4, 31, "Input",ExpressionUUID->"79da1cfc-5f6d-4911-9578-4e09088dfc90"],
+Cell[22519, 595, 250, 4, 36, "Text",ExpressionUUID->"d652fb60-5a5a-4993-a5d5-7e47cd9aee49"],
+Cell[22772, 601, 194, 4, 31, "Input",ExpressionUUID->"afccd80e-86c5-413c-8027-158fedc625f3"],
+Cell[CellGroupData[{
+Cell[22991, 609, 153, 3, 55, "Subsection",ExpressionUUID->"084af4d1-d11c-4eb6-bc78-058de1a53f6b"],
+Cell[23147, 614, 542, 8, 55, "Item",ExpressionUUID->"359c8826-eb67-499e-9077-d8bbffd5a640"]
+}, Closed]]
+}, Closed]]
 }, Open  ]]
 }
 ]
